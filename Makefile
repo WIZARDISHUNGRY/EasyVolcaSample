@@ -1,14 +1,14 @@
 TARGET = EasyVolcaSample
-LIBS = -lm
-CC = gcc
-CFLAGS = -g -Wall
+LIBS = -lm -framework cocoa -framework AppKit
+CC = clang 
+CFLAGS = -g -Wall 
 
 .PHONY: default all clean
 
 default: $(TARGET)
 all: default
 
-OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c))
+OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c)) $(patsubst %.m, %.o, $(wildcard *.m))
 HEADERS = $(wildcard *.h)
 
 %.o: %.c $(HEADERS)
